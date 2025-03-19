@@ -1,17 +1,30 @@
 package au.com.telstra.simcardactivator.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 public class SimCard {
+
+
     private String iccid;
+
     private String customerEmail;
+
     private boolean active;
 
     public SimCard() {
     }
-
     public SimCard(String iccid, String customerEmail, boolean active) {
         this.iccid = iccid;
         this.customerEmail = customerEmail;
         this.active = active;
+    }
+    // Constructor to convert from SimCardRecord
+    public SimCard(SimCardRecord simCardRecord) {
+        this.iccid = simCardRecord.getIccid();
+        this.customerEmail = simCardRecord.getCustomerEmail();
+        this.active = simCardRecord.isActive();
     }
 
     public String getIccid() {
